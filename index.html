@@ -107,8 +107,8 @@ img{
     <button class="no" onclick="answer(1,'q1',0,this)">Varikliui KAPŪT</button>
 
     <div class="question">Ar kartais norite vienas kitam trinktelėti per priekinius žibintus?💡</div>
-    <button class="yes" onclick="answer(1,'q2',1,this)">Ne tik norim, bet ir trinktelnam</button>
     <button class="no" onclick="answer(1,'q2',0,this)">NIEKADA - net tokios minties nebuvo</button>
+    <button class="yes" onclick="answer(1,'q2',1,this)">Ne tik norim, bet ir trinktelnam</button>
 
     <div class="question">Ar namuose dūmingumas neviršina leistinos ribos ir atitinka reikalavimus (t.y. iki 2 pykčio protrūkių per savaitę)?💨</div>
     <button class="yes" onclick="answer(1,'q3',1,this)">Kartais net ir mažesnis dūmingumas</button>
@@ -122,16 +122,16 @@ img{
     <h2>2 PATIKROS ETAPAS</h2>
 
     <div class="question">Mes, Vilija ir Svenas, pasižadame, kad gebėsime nuvykti į Naująją Zelandiją, kuri yra tiksliai po mūsų kojomis, per žemės centrą 🌏</div>
+    <button class="no" onclick="answer(2,'q1',0,this)">Galimai</button>
     <button class="yes" onclick="answer(2,'q1',1,this)">DRĄSIAI</button>
-    <button class="no" onclick="answer(2,'q1',0,this)">Ne... Nieko nebus</button>
-
+    
     <div class="question">Mes, Vilija ir Svenas, pasižadame, kad bent kartą per mėnesį vienas kitam parodysime gerumo proveržius ir užtikrinsime žvakių / tepalų / tarpinių tinkamumą🔧</div>
+    <button class="no" onclick="answer(2,'q2',0,this)">Bandome kartais</button>
     <button class="yes" onclick="answer(2,'q2',1,this)">EASY, jau dabar praktikuojam šitą</button>
-    <button class="no" onclick="answer(2,'q2',0,this)">Neprisvaigstam, gerai?</button>
 
     <div class="question">Mes, Vilija ir Svenas, pasižadame, kad vienas kito klausysime kai, suksimės šokio ritmu 💃🕺</div>
     <button class="yes" onclick="answer(2,'q3',1,this)">Būtinai</button>
-    <button class="no" onclick="answer(2,'q3',0,this)">Gal...</button>
+    <button class="no" onclick="answer(2,'q3',0,this)">Jeigu tik patiks daina</button>
 
     <button class="next" onclick="check(2)">Tikrinti</button>
 </div>
@@ -145,8 +145,8 @@ img{
     <button class="no" onclick="answer(3,'q1',0,this)">Važiuoklei jau irgi KAPŪT</button>
 
     <div class="question">Ar gedimai vis dar išsprendžiami be būtinybės kviesti „techninę pagalbą“ (chiromantija / taseografija / chatgpt)🆘?</div>
-    <button class="yes" onclick="answer(3,'q2',1,this)">Dažniausia</button>
     <button class="no" onclick="answer(3,'q2',0,this)">Techninė pagalba būtina visada</button>
+    <button class="yes" onclick="answer(3,'q2',1,this)">Dažniausia</button>
 
     <div class="question">Ar patvirtinate, kad garantija galioja visam gyvenimui, net jei kartais atsiranda keisti garsai po kapotu?🤝</div>
     <button class="yes" onclick="answer(3,'q3',1,this)">Tvirtiname</button>
@@ -158,7 +158,7 @@ img{
 <!-- FAIL -->
 <div id="fail" class="hidden">
     <h2 class="warn">⚠️ WOW WOW WOW, chebra, nepraėjot techo... Kas vyksta? 🤯</h2>
-    <p>Kad pakartotumėt patikros etapą teks vienas kitam sumokėti po diskę</p>
+    <p>Kad pakartotumėt patikros etapą teks vienas kitam sumokėti po 100 kr. </p>
     <button class="next" onclick="restartStage()">Pasižadame sumokėti ir kartojame patikrą</button>
 </div>
 
