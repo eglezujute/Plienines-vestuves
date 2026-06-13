@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plieninės vestuvės? Atlikite techninę apžiūrą</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#1e1e1e,#3a3a3a);
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.card{
+    max-width:800px;
+    width:100%;
+    background:rgba(255,255,255,0.08);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.hidden{display:none;}
+
+h1,h2{margin-top:0;}
+
+.question{
+    margin:18px 0 6px;
+    font-size:18px;
+}
+
+/* BUTTON BASE */
+button{
+    margin:6px;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    border:2px solid #ccc;
+    background:white;
+    color:black;
+    transition:0.2s;
+}
+
+/* YES / NO default */
+.yes,.no{
+    background:white;
+}
+
+/* SELECTED STATES */
+.selected-yes{
+    background:#2ecc71 !important;
+    color:white !important;
+    border-color:#2ecc71 !important;
+}
+
+.selected-no{
+    background:#e74c3c !important;
+    color:white !important;
+    border-color:#e74c3c !important;
+}
+
+/* NEXT BUTTON */
+.next{
+    display:block;
+    margin:25px auto 0 auto;
+    background:#f2c94c;
+    color:black;
+    border:none;
+}
+
+/* FAIL */
+.warn{
+    color:#f2c94c;
+    font-size:20px;
+}
+
+img{
+    width:100%;
+    max-width:500px;
+    border-radius:12px;
+    margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- START -->
+<div id="start">
+    <h1>🏗️ Plieninės vestuvės? Atlikite techninę apžiūrą</h1>
+    <p>Objektas: Vilija + Svenas/p>
+    <p>Ekspertizės Nr.: 2026/06/26</p>
+    <button class="next" onclick="startTest()">TIKRINTI TINKAMUMĄ</button>
+</div>
+
+<!-- STAGE 1 -->
+<div id="stage1" class="hidden">
+    <h2>1 PATIKROS ETAPAS</h2>
+
+    <div class="question">Ar meilės variklis veikia tvarkingai (t.y. neužkalęs)?🚨</div>
+    <button class="yes" onclick="answer(1,'q1',1,this)">Variklis neužkalęs</button>
+    <button class="no" onclick="answer(1,'q1',0,this)">Varikliui KAPŪT</button>
+
+    <div class="question">Ar kartais norite vienas kitam trinktelėti per priekinius žibintus?💡</div>
+    <button class="yes" onclick="answer(1,'q2',1,this)">Ne tik norim, bet ir trinktelnam</button>
+    <button class="no" onclick="answer(1,'q2',0,this)">NIEKADA - net tokios minties nebuvo</button>
+
+    <div class="question">Ar namuose dūmingumas neviršina leistinos ribos ir atitinka reikalavimus (t.y. iki 2 pykčio protrūkių per savaitę)?💨</div>
+    <button class="yes" onclick="answer(1,'q3',1,this)">Kartais net ir mažesnis dūmingumas</button>
+    <button class="no" onclick="answer(1,'q3',0,this)">Norma VIRŠINAMA</button>
+
+    <button class="next" onclick="check(1)">Tikrinti</button>
+</div>
+
+<!-- STAGE 2 -->
+<div id="stage2" class="hidden">
+    <h2>2 PATIKROS ETAPAS</h2>
+
+    <div class="question">Mes, Vilija ir Svenas, pasižadame, kad gebėsime nuvykti į Naująją Zelandiją, kuri yra tiksliai po mūsų kojomis, per žemės centrą 🌏</div>
+    <button class="yes" onclick="answer(2,'q1',1,this)">DRĄSIAI</button>
+    <button class="no" onclick="answer(2,'q1',0,this)">Ne... Nieko nebus</button>
+
+    <div class="question">Mes, Vilija ir Svenas, pasižadame, kad bent kartą per mėnesį vienas kitam parodysime gerumo proveržius ir užtikrinsime žvakių / tepalų / tarpinių tinkamumą🔧</div>
+    <button class="yes" onclick="answer(2,'q2',1,this)">EASY, jau dabar praktikuojam šitą</button>
+    <button class="no" onclick="answer(2,'q2',0,this)">Neprisvaigstam, gerai?</button>
+
+    <div class="question">Mes, Vilija ir Svenas, pasižadame, kad vienas kito klausysime kai, suksimės šokio ritmu 💃🕺</div>
+    <button class="yes" onclick="answer(2,'q3',1,this)">Būtinai</button>v
+    <button class="no" onclick="answer(2,'q3',0,this)">Gal...</button>
+
+    <button class="next" onclick="check(2)">Tikrinti</button>
+</div>
+
+<!-- STAGE 3 -->
+<div id="stage3" class="hidden">
+    <h2>3 PATIKROS ETAPAS</h2>
+
+    <div class="question">Ar važiuoklė išlaiko ilgalaikes vibracijas: šeimų susitikimus ir meeting'us su Zujais, maisto gaminimo testus be rimtų gedimų?😶</div>
+    <button class="yes" onclick="answer(3,'q1',1,this)">Važiuoklė paturbinta, viską praeina</button>
+    <button class="no" onclick="answer(3,'q1',0,this)">Važiuoklei jau irgi KAPŪT</button>
+
+    <div class="question">Ar gedimai vis dar išsprendžiami be būtinybės kviesti „techninę pagalbą“ (chiromantija / taseografija / chatgpt)🆘?</div>
+    <button class="yes" onclick="answer(3,'q2',1,this)">Dažniausia</button>
+    <button class="no" onclick="answer(3,'q2',0,this)">Techninė pagalba būtina visada</button>
+
+    <div class="question">Ar patvirtinate, kad garantija galioja visam gyvenimui, net jei kartais atsiranda keisti garsai po kapotu?🤝</div>
+    <button class="yes" onclick="answer(3,'q3',1,this)">Tvirtiname</button>
+    <button class="no" onclick="answer(3,'q3',0,this)">Nea</button>
+
+    <button class="next" onclick="check(3)">PABAIGA</button>
+</div>
+
+<!-- FAIL -->
+<div id="fail" class="hidden">
+    <h2 class="warn">⚠️ WOW WOW WOW, chebra, nepraėjot techo... Kas vyksta? 🤯</h2>
+    <p>Kad pakartotumėt patikros etapą teks vienas kitam sumokėti po diskę</p>
+    <button class="next" onclick="restartStage()">Pasižadame sumokėti ir kartojame patikrą</button>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="hidden">
+    <h1>🏆 Toliau eksplotuoti tinkami</h1>
+    <p>Suteiktas statusas: PLIENINĖ SANTUOKA🥇</p>
+
+    <img src="https://cdn.corenexis.com/f/0XpvC6LoAHn.jpeg">
+
+    <h2>Sveikiname Jus, Vilija ir Svenai, su plieninėmis vestuvių metinėmis ir linkime, jog visi buvę gyvenimo išbandymai būtų iškalti į plienines pasagas, kurios toliau neštų tik begalinę laimę ir sėkmę! ❤️ Zujai</h2>
+
+    <button class="next" onclick="restartAll()">
+    🔧 Atnaujinti technikinę
+</button>
+</div>
+
+</div>
+
+<script>
+
+let answers = {1:{},2:{},3:{}};
+let currentStage = 1;
+
+function startTest(){
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("stage1").classList.remove("hidden");
+}
+
+function answer(stage,q,val,btn){
+
+    answers[stage][q] = val;
+
+    // tik šitas mygtukas gauna state (NEBERESETINAM KITŲ)
+    if(val === 1){
+        btn.classList.add("selected-yes");
+        btn.classList.remove("selected-no");
+    } else {
+        btn.classList.add("selected-no");
+        btn.classList.remove("selected-yes");
+    }
+}
+
+function check(stage){
+
+    currentStage = stage;
+
+    let data = answers[stage];
+
+    if(Object.keys(data).length < 3){
+        alert("Nu kur? Atsakykite į visus patikros klausimus...");
+        return;
+    }
+
+    let yes = Object.values(data).filter(v=>v===1).length;
+
+    if(yes >= 3){
+
+        document.getElementById("stage"+stage).classList.add("hidden");
+
+        if(stage === 1){
+            document.getElementById("stage2").classList.remove("hidden");
+            currentStage = 2;
+        }
+        else if(stage === 2){
+            document.getElementById("stage3").classList.remove("hidden");
+            currentStage = 3;
+        }
+        else{
+            document.getElementById("final").classList.remove("hidden");
+        }
+
+    } else {
+        document.getElementById("stage"+stage).classList.add("hidden");
+        document.getElementById("fail").classList.remove("hidden");
+    }
+}
+
+function restartStage(){
+    answers[currentStage] = {};
+
+    document.getElementById("fail").classList.add("hidden");
+    document.getElementById("stage"+currentStage).classList.remove("hidden");
+
+    let buttons = document
+        .getElementById("stage"+currentStage)
+        .querySelectorAll("button");
+
+    buttons.forEach(b=>{
+        b.classList.remove("selected-yes","selected-no");
+    });
+}
+
+function restartAll(){
+
+    answers = {1:{},2:{},3:{}};
+
+    document.getElementById("stage1").classList.add("hidden");
+    document.getElementById("stage2").classList.add("hidden");
+    document.getElementById("stage3").classList.add("hidden");
+    document.getElementById("fail").classList.add("hidden");
+    document.getElementById("final").classList.add("hidden");
+
+    document.getElementById("start").classList.remove("hidden");
+
+    document.querySelectorAll("button").forEach(btn=>{
+        btn.classList.remove("selected-yes","selected-no");
+    });
+
+    currentStage = 1;
+}
+
+</script>
+
+</body>
+</html>
